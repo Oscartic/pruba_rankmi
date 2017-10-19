@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20171018202230) do
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.float "score", default: 0.0
-    t.bigint "leadership_id"
-    t.index ["leadership_id"], name: "index_areas_on_leadership_id"
+    t.bigint "area_id"
+    t.index ["area_id"], name: "index_areas_on_area_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -29,5 +29,6 @@ ActiveRecord::Schema.define(version: 20171018202230) do
     t.index ["area_id"], name: "index_departments_on_area_id"
   end
 
+  add_foreign_key "areas", "areas"
   add_foreign_key "departments", "areas"
 end
